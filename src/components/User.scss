@@ -1,0 +1,19 @@
+.form-wrapper {
+  width: 100%;
+  margin: 0 auto;
+  padding: 24px 24px;
+
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+
+  .info {
+    margin: 0 auto;
+    padding-bottom: 12px;
+    font-size: 20px;
+
+    &-tips {
+      font-size: 16px;
+    }
+  }
+}
