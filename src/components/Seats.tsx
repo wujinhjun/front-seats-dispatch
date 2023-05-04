@@ -1,4 +1,5 @@
 import axios from "axios";
+import { Button } from "antd";
 import { useContext, useEffect, useMemo, useState } from "react";
 import classnames from "classnames";
 import "./Seats.scss";
@@ -232,6 +233,9 @@ function Seats() {
   return (
     <div>
       <span>座位分发与核销情况</span>
+      <Button type="link" href="/">
+        back
+      </Button>
       <div className="wrapper">
         {seats.map((items, index) => {
           return (
@@ -249,6 +253,7 @@ function Seats() {
           );
         })}
       </div>
+      <div></div>
     </div>
   );
 }

@@ -17,11 +17,10 @@ export default function Show() {
   console.log(prefix);
 
   return (
-    <div>
+    <div className="show-wrapper">
       <QRCode
         value={`${prefix}/verify/${data.substring(2, data.length - 2)}`}
       ></QRCode>
-      <div>{data}</div>
       <div>
         您的座位是{data.substring(0, 2)}排{data.substring(data.length - 2)}号
       </div>

@@ -26,7 +26,7 @@ const validateMessages = {
 };
 
 export default function User() {
-  const { url: prefixUrl } = useContext(MyContext);
+  const { url: prefixUrl, host } = useContext(MyContext);
   const location = useLocation();
 
   const [seatNum, setSeatNum] = useState("");
@@ -50,9 +50,13 @@ export default function User() {
       });
 
       if (!res.data.status) {
-        window.location.href = "/help";
+        window.location.href = `${host}/help`;
       } else {
-        window.location.href = `/show?id=${seatNum}`;
+        console.log(host);
+
+        console.log(name);
+
+        window.location.href = `${host}/show?id=${seatNum}`;
       }
     } catch (err) {
       console.error(err);

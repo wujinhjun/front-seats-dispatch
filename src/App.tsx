@@ -21,6 +21,7 @@ function App() {
 
   return (
     <MyContext.Provider value={{ url, setUrl, host, setHost }}>
+      {/* <Home></Home> */}
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />

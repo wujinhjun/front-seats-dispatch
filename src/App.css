@@ -40,3 +40,10 @@
     transform: rotate(360deg);
   }
 }
+
+.show-wrapper {
+  position: absolute;
+  left: 50%;
+  /* top: 50%; */
+  transform: translate(-50%, 0);
+}

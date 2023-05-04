@@ -4,7 +4,7 @@ import axios from "axios";
 import MyContext from "./MyContext";
 
 export default function Display() {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState("");
   const { url: prefix, host } = useContext(MyContext);
   const url = `${prefix}/next`;
 
@@ -21,19 +21,26 @@ export default function Display() {
       }
 
       setData(res.data.data);
-      console.log(data);
+      //   console.log(data);
     } catch (err) {
       console.error(err);
     }
   };
 
   return (
-    <div>
-      <QRCode value={`${host}/user?id=${data}`}></QRCode>
+    <div className="show-wrapper">
+      <QRCode value={`${host}/user?id=${data}`} size={400}></QRCode>
+      <div>
+        {data.substring(0, 2)}排{data.substring(data.length - 2)}号
+      </div>
       <Button type="primary" onClick={nextSeat}>
         next
       </Button>
-      <div>{data}</div>
+      <div>
+        <Button type="link" href="/">
+          back
+        </Button>
+      </div>
     </div>
   );
 }
