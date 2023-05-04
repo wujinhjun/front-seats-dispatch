@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import React from "react";
-import { Button, Form, Input, InputNumber, Alert } from "antd";
+import { Button, Form, Input } from "antd";
 import "./User.scss";
 import axios from "axios";
 import MyContext from "./MyContext";
@@ -12,12 +11,16 @@ const layout = {
 };
 
 const validateMessages = {
+  // eslint-disable-next-line no-template-curly-in-string
   required: "${label} 是必须的!",
   types: {
+    // eslint-disable-next-line no-template-curly-in-string
     email: "${label} 不是一个正常的邮件!",
+    // eslint-disable-next-line no-template-curly-in-string
     number: "${label} 不是一个正常的数字!",
   },
   number: {
+    // eslint-disable-next-line no-template-curly-in-string
     range: "${label} 必须位于 ${min} 与 ${max} 之间",
   },
 };
@@ -34,7 +37,7 @@ export default function User() {
     const searchParams = new URLSearchParams(location.search);
     const id = searchParams.get("id");
     id && setSeatNum(id);
-  }, []);
+  }, [location]);
 
   const url = `${prefixUrl}/claimed`;
 
@@ -69,7 +72,6 @@ export default function User() {
             <Form
               {...layout}
               name="nest-messages"
-              //   onFinish={onFinish}
               style={{ maxWidth: 600 }}
               validateMessages={validateMessages}
             >

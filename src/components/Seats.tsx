@@ -190,7 +190,7 @@ function Seats() {
     };
 
     fetchData();
-  }, []);
+  }, [url]);
 
   const seats = useMemo(() => {
     const m = layout.length,

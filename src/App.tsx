@@ -1,5 +1,5 @@
-import React, { useEffect, useState, useContext, createContext } from "react";
-import { BrowserRouter as Router, Link, Route, Routes } from "react-router-dom";
+import { useContext, useState } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
 
 import Login from "./components/Login";
@@ -15,10 +15,12 @@ import MyContext from "./components/MyContext";
 import Verify from "./components/Verify";
 
 function App() {
-  const { url, setUrl } = useContext(MyContext);
+  const { url: defaultUrl, host: defaultHost } = useContext(MyContext);
+  const [url, setUrl] = useState(defaultUrl);
+  const [host, setHost] = useState(defaultHost);
 
   return (
-    <MyContext.Provider value={{ url, setUrl }}>
+    <MyContext.Provider value={{ url, setUrl, host, setHost }}>
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />

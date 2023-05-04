@@ -13,7 +13,7 @@ export default function Show() {
     const searchParams = new URLSearchParams(location.search);
     const id = searchParams.get("id");
     id && setData(id);
-  }, []);
+  }, [location]);
   console.log(prefix);
 
   return (

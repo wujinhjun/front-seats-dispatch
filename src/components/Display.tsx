@@ -5,7 +5,7 @@ import MyContext from "./MyContext";
 
 export default function Display() {
   const [data, setData] = useState([]);
-  const { url: prefix } = useContext(MyContext);
+  const { url: prefix, host } = useContext(MyContext);
   const url = `${prefix}/next`;
 
   const nextSeat = async () => {
@@ -29,7 +29,7 @@ export default function Display() {
 
   return (
     <div>
-      <QRCode value={`${prefix}/user?id=${data}`}></QRCode>
+      <QRCode value={`${host}/user?id=${data}`}></QRCode>
       <Button type="primary" onClick={nextSeat}>
         next
       </Button>
