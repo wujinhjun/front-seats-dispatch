@@ -1,14 +1,21 @@
-# 使用 nginx:alpine 作为基础镜像
-FROM nginx:alpine
+FROM node:18
 
-# 将本地的 build 文件夹里的内容复制到 nginx 默认静态文件目录
-COPY build /usr/share/nginx/html
+WORKDIR /app
 
-# 将 nginx 的配置文件拷贝到容器中
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY . /app/
 
-# 声明容器要使用的端口
-EXPOSE 80
+RUN npm install -g pnpm
 
-# 启动 nginx 服务
-CMD ["nginx", "-g", "daemon off;"]
+ENV PNPM_HOME=/usr/local/bin
+
+RUN pnpm config set store-dir /usr/local/bin/store/v3 --global
+
+RUN pnpm install -g serve
+
+RUN pnpm install
+
+RUN pnpm run build
+
+EXPOSE 3000
+
+CMD ["pnpm", "start"]
